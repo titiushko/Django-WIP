@@ -1,4 +1,4 @@
 from django.contrib import admin
-from apps.Adopcion.models import Persona
+from apps.adopcion.models import Persona
 
 admin.site.register(Persona)

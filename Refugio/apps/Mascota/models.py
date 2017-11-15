@@ -1,8 +1,11 @@
 from django.db import models
-from apps.Adopcion.models import Persona
+from apps.adopcion.models import Persona
 
 class Vacuna(models.Model):
     nombre = models.CharField(max_length=50)
+
+    def __str__(self):
+        return '{}'.format(self.nombre)
 
 class Mascota(models.Model):
     nombre = models.CharField(max_length=50)
@@ -11,3 +14,6 @@ class Mascota(models.Model):
     fecha_rescate = models.DateField()
     persona = models.ForeignKey(Persona, null=True, blank=True, on_delete=models.CASCADE) # relación de uno a muchos
     vacuna = models.ManyToManyField(Vacuna) # relación de muchos a muchos
+
+    def __str__(self):
+        return '{}'.format(self.nombre)
