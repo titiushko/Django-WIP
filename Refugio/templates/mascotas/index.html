@@ -7,7 +7,6 @@
 <link href="{% static 'css/personalizaciones/datatable.css' %}" rel="stylesheet" />
 {% endblock %}
 {% block content %}
-{% csrf_token %}
 <div class="row">
   <div class="col-lg-12">
 	<h3 class="page-header"><i class="fa fa-paw"></i> Mascotas</h3>
@@ -39,7 +38,7 @@
 					<td>{{ mascota.edad_aproximada }}</td>
 					<td>{{ mascota.fecha_rescate }}</td>
 					<td>{{ mascota.persona }}</td>
-					<td><a class="btn btn-danger" id="EliminarMascota" data-id="{{ mascota.id }}"><i class="fa fa-trash"></i></a></td>
+					<td><a class="btn btn-danger EliminarMascota" data-url="{% url 'mascotas:eliminar' mascota.id %}"><i class="fa fa-trash"></i></a></td>
 				</tr>
 				{% endfor %}
 			</tbody>
@@ -56,23 +55,29 @@
 <script src="{% static 'js/personalizaciones/datatable.js' %}"></script>
 <script type="text/javascript">
 	$(document).ready(function () {
-		$("#EliminarMascota").click(function (event) {
+		$(".EliminarMascota").click(function (event) {
 			event.preventDefault();
 			$elemento = $(this);
 			alertify.confirm(
 				"¿Desea eliminar esta mascota?",
 				function () {
-					debugger;
 					$.ajax({
-						type: "POST",
-						url: "{% url 'mascotas:eliminar' %}",
-						data: { id: $elemento.data("id") },
+						url: $elemento.data("url"),
+						type: "GET",
 						dataType: "json",
 						success: function (response) {
-							debugger;
+							if (response.error) {
+								alertify.error(response.mensaje);
+							}
+							else {
+								alertify.success(response.mensaje);
+								setTimeout(function () { location.reload(true); }, 1000);
+							}
 						},
 						error: function (exception) {
-							debugger;
+							if (exception.status != undefined) {
+								alertify.error(exception.status + " (" + exception.statusText + ")");
+							}
 						}
 					});
 				},

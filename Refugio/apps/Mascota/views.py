@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import JsonResponse
 from apps.mascota.forms import MascotaForm
 from apps.mascota.models import Mascota
 
@@ -28,7 +29,7 @@ def modificar(request, id):
 
 def eliminar(request, id):
 	mascota = Mascota.objects.get(id = id)
-	if request.method == 'POST':
+	if request.method == 'GET':
 		mascota.delete()
-		return redirect('mascotas:index')
-	return render(request, 'mascotas/index.html', { 'mensaje_error': 'No se pudo eliminar la Mascota ' + mascota.nombre })
+		return JsonResponse({'error': False, 'mensaje': 'Se eliminó la Mascota ' + mascota.nombre})
+	return JsonResponse({'error': True, 'mensaje': 'No se pudo eliminar la Mascota ' + mascota.nombre})

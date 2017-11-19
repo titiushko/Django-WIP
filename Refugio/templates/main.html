@@ -408,6 +408,9 @@
             {% if mensaje_error %}
             alertify.error("{{ mensaje_error }}");
             {% endif %}
+            {% if mensaje_exito %}
+            alertify.success("{{ mensaje_exito }}");
+            {% endif %}
         });
     </script>
     {% block js %}

@@ -26,11 +26,6 @@
 							<button class="btn btn-primary" type="submit">
 								<i class="fa fa-floppy-o"></i> Guardar
 							</button>
-							{% if mascota_form %}
-							<a href="{% url 'mascotas:eliminar' %}" class="btn btn-danger">
-								<i class="fa fa-trash"></i> Eliminar
-							</a>
-							{% endif %}
 							<a href="{% url 'mascotas:index' %}" class="btn btn-default">
 								<i class="fa fa-times-circle"></i> Cancelar
 							</a>
