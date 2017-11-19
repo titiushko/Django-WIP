@@ -1,12 +1,12 @@
 {% extends 'main.html' %}
-{% block title %}Agregar Mascota{% endblock %}
+{% block title %}Agregar Persona{% endblock %}
 {% block content %}
 <div class="row">
   <div class="col-lg-12">
-	<h3 class="page-header"><i class="fa fa-paw"></i> Mascotas</h3>
+	<h3 class="page-header"><i class="fa fa-user"></i> Personas</h3>
 	<ol class="breadcrumb">
 		<li><a href="{% url 'general:inicio' %}"><i class="fa fa-home"></i> Inicio</a></li>
-		<li><a href="{% url 'mascotas:index' %}"><i class="fa fa-paw"></i> Mascotas</a></li>
+		<li><a href="{% url 'adopciones:index' %}"><i class="fa fa-user"></i> Personas</a></li>
 		<li><i class="fa fa-file-text-o"></i> Datos</li>
 	</ol>
   </div>
@@ -15,18 +15,18 @@
     <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
         <div class="panel panel-default">
 			<div class="panel-heading">
-				<h3 class="panel-title">Datos Mascota</h3>
+				<h3 class="panel-title">Datos Persona</h3>
 			</div>
 			<div class="panel-body">
 				<form method="post" autocomplete="off">
 					{% csrf_token %}
 					<fieldset>
-						{{ mascota_form.as_p }}
+						{{ form.as_p }}
 						<div class="form-group">
 							<button class="btn btn-primary" type="submit">
 								<i class="fa fa-floppy-o"></i> Guardar
 							</button>
-							<a href="{% url 'mascotas:index' %}" class="btn btn-default">
+							<a href="{% url 'adopciones:index' %}" class="btn btn-default">
 								<i class="fa fa-times-circle"></i> Cancelar
 							</a>
 						</div>
