@@ -1,0 +1,164 @@
+{% extends 'base/base.html' %}
+{% block title %}Registro de Empleado{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h1 class="page-header"><i class="fa fa-file-text-o"></i> Registro de Empleado</h1>
+        <ol class="breadcrumb">
+            <li><a href="{% url 'expediente:inicio' %}"><i class="fa fa-home"></i> Inicio</a></li>
+            <li><a href="{% url 'expediente:listado_empleados' %}"><i class="fa fa-user"></i> Empleados</a></li>
+            <li><i class="fa fa-file-text-o"></i> Datos</li>
+        </ol>
+    </div>
+</div>
+<form method="post" autocomplete="off">
+	{% csrf_token %}
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Complete los datos requeridos</h3>
+		</div>
+		<div class="panel-body">
+			<fieldset>
+				<legend>Datos Personales</legend>
+				{% if persona_errores %}
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="alert alert-danger">{{ persona_errores }}</div>
+					</div>
+				</div>
+				{% endif %}
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<label for="{{form2.primerNombre.name}}">{{form2.primerNombre.label}}</label>
+							{{form2.primerNombre}}
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<label for="{{form2.segundoNombre.name}}">{{form2.segundoNombre.label}}</label>
+							{{form2.segundoNombre}}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<label for="{{form2.tercerNombre.name}}">{{form2.tercerNombre.label}}</label>
+							{{form2.tercerNombre}}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<label for="{{form2.primerApellido.name}}">{{form2.primerApellido.label}}</label>
+							{{form2.primerApellido}}
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<label for="{{form2.segundoApellido.name}}">{{form2.segundoApellido.label}}</label>
+							{{form2.segundoApellido}}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<label for="{{form2.genero.name}}">{{form2.genero.label}}</label>
+							{{form2.genero}}
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<label for="{{form2.dui.name}}">{{form2.dui.label}}</label>
+							{{form2.dui}}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<label for="{{form2.telefonoFijo.name}}">{{form2.telefonoFijo.label}}</label>
+							{{form2.telefonoFijo}}
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<label for="{{form2.telefonoMovil.name}}">{{form2.telefonoMovil.label}}</label>
+							{{form2.telefonoMovil}}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<label for="{{form2.correoElectronico.name}}">{{form2.correoElectronico.label}}</label>
+							{{form2.correoElectronico}}
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<label for="{{form2.Direccion.name}}">{{form2.Direccion.label}}</label>
+							{{form2.Direccion}}
+						</div>
+					</div>
+				</div>
+				<legend>Datos de Empleado</legend>
+				{% if empleado_errores %}
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+						<div class="alert alert-danger">{{ empleado_errores }}</div>
+					</div>
+				</div>
+				{% endif %}
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<label for="{{form.fechaIngreso.name}}">{{form.fechaIngreso.label}}</label>
+							{{form.fechaIngreso}}
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<label for="{{form.tiempoServicio.name}}">{{form.tiempoServicio.label}}</label>
+							{{form.tiempoServicio}}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<label for="{{form.jVPM.name}}">{{form.jVPM.label}}</label>
+							{{form.jVPM}}
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<label for="{{form.CatalogoEspecialidadEmpleado.name}}">{{form.CatalogoEspecialidadEmpleado.label}}</label>
+							{{form.CatalogoEspecialidadEmpleado}}
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+						<div class="form-group">
+							<label for="{{form.Clinica.name}}">{{form.Clinica.label}}</label>
+							{{form.Clinica}}
+						</div>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+	</div>
+	<div class="form-group">
+		<button class="btn btn-primary" type="submit">
+			<i class="fa fa-floppy-o"></i> Guardar
+		</button>
+		<a href="{% url 'expediente:listado_empleados' %}" class="btn btn-danger">
+			<i class="fa fa-times-circle"></i> Cancelar
+		</a>
+	</div>
+</form>
+{% endblock %}

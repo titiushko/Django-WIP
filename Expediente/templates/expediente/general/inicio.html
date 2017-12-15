@@ -1,0 +1,93 @@
+{% extends 'base/base.html' %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h1 class="page-header"><i class="fa fa-home"></i> Inicio</h1>
+        <ol class="breadcrumb">
+            <li><i class="fa fa-home"></i> Inicio</li>
+        </ol>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1><i class="fa fa-desktop"></i> Expedientes</h1>
+            </div>
+            <div class="panel-body">
+                <ul class="list">
+                    <li><a href="{% url 'expediente:listado_expedientes' %}">Listado</a></li>
+                    {% if perms.expediente.add_signovital %}<li><a href="{% url 'expediente:listado_signos_vitales' %}">Signos Vitales</a></li>{% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1><i class="fa fa-list-alt"></i> Consultas</h1>
+            </div>
+            <div class="panel-body">
+                <ul class="list">
+                    <li><a href="{% url 'expediente:listado_consultas' %}">Listado</a></li>
+                    <li><a href="{% url 'expediente:listado_constancias' %}">Constancias</a></li>
+                    <li><a href="{% url 'expediente:listado_incapacidades' %}">Incapacidades</a></li>
+                    <li><a href="{% url 'expediente:listado_referencia_medica' %}">Referencias Medicas</a></li>
+                    <li><a href="{% url 'expediente:listado_recetas' %}">Recetas Medicas</a></li>
+                    <li><a href="{% url 'expediente:listado_ordenes_examen' %}">Ordenes de Examenes Medicos</a></li>
+                    <li><a href="{% url 'expediente:listado_examenes' %}">Resultados Examenes</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% if perms.auth.add_permission %}
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1><i class="fa fa-users"></i> Empleados</h1>
+            </div>
+            <div class="panel-body">
+                <ul class="list">
+                    <li><a href="{% url 'expediente:listado_empleados' %}">Listado</a></li>
+                    <li><a href="{% url 'expediente:listado_turnos' %}">Turnos</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% if perms.auth.add_permission %}
+<div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1><i class="fa fa-table"></i> Catalogos</h1>
+            </div>
+            <div class="panel-body">
+                <ul class="list">
+                    <li><a href="{% url 'expediente:listado_tipo_examen' %}">Tipos Examenes</a></li>
+                    <li><a href="{% url 'expediente:listado_especialidades_empleados' %}">Especialidades de Empleados</a></li>
+                    <li><a href="{% url 'expediente:alergia_listar' %}">Alergias</a></li>
+                    <li><a href="{% url 'expediente:listado_enfermedades' %}">Enfermedades</a></li>
+                    <li><a href="{% url 'expediente:listado_medicamentos' %}">Medicamentos</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1><i class="fa fa-ambulance"></i> Clinicas</h1>
+            </div>
+            <div class="panel-body">
+                <ul class="list">
+                    <li><a href="{% url 'expediente:listado_clinicas' %}">Listado</a></li>
+                    <li><a href="{% url 'expediente:listado_tipo_clinicas' %}">Tipos</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
